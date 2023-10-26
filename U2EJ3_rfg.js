@@ -13,10 +13,13 @@ Al pulsar cancelar, el programa termina.
 COMO SIEMPRE, GUARDA LOS ARCHIVOS SIGUIENDO LAS INDICACIONES PUBLICADAS EN LA MOODLE.
  */
 
-let num = false;
+
 
 while (true) {
+    let num = false;
+    let caracterEspecial = false;
     let entrada = prompt("Introduce una posible contraseña");
+
     if (entrada === null) {
         alert("Programa terminado");
         break;
@@ -24,17 +27,42 @@ while (true) {
 
     let contra = new String(entrada);
     if (contra.length <= 16 && contra.length >= 8){
-        if (contra !== contra.toLowerCase){
-            if(contra !== contra.toUpperCase){
-                for(i=0;i<10;i++){
-                    if(contra.includes(i)){
+        alert(contra + "\n" + contra.toLowerCase() + "\n" + contra.toUpperCase())
+        alert(contra !== contra.toLowerCase())
+        if (contra !== contra.toLowerCase()) {
+            alert(contra !== contra.toUpperCase())
+            if (contra !== contra.toUpperCase()) {
+                for (let i = 0; i < 10; i++) {
+                    if (contra.includes(i)) {
                         num = true;
+                        break; 
                     }
                 }
-                if(!num){
-                    
+                if (num) {
+                    let caracteresEspeciales = ["-", "_", "@", "#", "$", "%", "&"];
+                    for (let i = 0; i < caracteresEspeciales.length; i++) {
+                        if (contra.indexOf(caracteresEspeciales[i]) !== -1) {
+                            caracterEspecial = true;
+                            break; 
+                        }
+                    }
+                    if (caracterEspecial) {
+                        alert(contra);
+                        break;
+                    } else {
+                        alert("No contiene ninguno de los caracteres especiales");
+                    }
+                } else {
+                    alert("No tiene ningún número");
                 }
+            } else {
+                alert("No tiene ninguna minúscula");
             }
+        } else {
+            alert("No tiene ninguna mayúscula");
         }
+    } else {
+        alert("La contraseña es o bien muy corta o muy larga");
     }
 }
+
