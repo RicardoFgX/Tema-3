@@ -3,7 +3,7 @@
 si existe el valor como tal en el array y la otra viendo si existe alguna posición 
 en la que se encuentre ese valor.
 */
-let array = [2, 4, 6, 8];
+let array = [2, 4, 6, 8, 10, 12, 14, 16];
 let valor = prompt("Introduzca un número para ver si está dentro del array");
 if (valor === null) {
     alert("Programa terminado");
@@ -31,3 +31,10 @@ function existeValor2(array, valor) {
   }
 
 //Ejercicio 2.
+
+for (let i = 0; i < array.length; i++) {
+  let random = Math.floor(Math.random() * (array.length-1));
+  alert("" + i + " " + random);
+  [array[i],array[random]]= [array[random],array[i]];
+}
+alert(array);
