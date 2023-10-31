@@ -16,6 +16,7 @@ Teniendo en cuenta que Hora de Finalización y/o Hora de Inicio pueden ser nulos
 En caso de que ocurra esto último debe devolver 00:00:00.
  */
 
+//Clase Runner
 function Runner(nombre, apellidos, evento, fecha, dorsal, horaInicio, horaFinal) {
     this.Nombre = nombre;
     this.Apellidos = apellidos;
@@ -26,11 +27,16 @@ function Runner(nombre, apellidos, evento, fecha, dorsal, horaInicio, horaFinal)
     this.HoraFinal = horaFinal;
 }
 
+//Metodo para calcular la marca de un runner
 function calcularMarca(runner) {
+    //Comprobaciones por consola de los valores
     console.log("Hora de inicio:" + runner.HoraInicio);
     console.log("Hora de finalización:" + runner.HoraFinal);
+
+    //Si ambos valores no son nulos se realiza la marca
     if (runner.HoraInicio && runner.HoraFinal) {
-        //Esta en milisegundos
+
+        //Tiempo trascurrido total (en milisegundos)
         let tiempoTranscurrido = runner.HoraFinal - runner.HoraInicio;
         console.log("Milisegundo:" + tiempoTranscurrido);
         //Pasamos de milisegundos a segundos y redondeamos
@@ -48,11 +54,14 @@ function calcularMarca(runner) {
 
         //String.padStart lo usamos para que tenga el formato 00:00:00, ya que si por ejemplo solo tuvieramos horas, minutos o segundo de una cifra se vería como: 1:20:2
         return String(horas).padStart(2, "0") + ":" + String(minutos).padStart(2, "0") + ":" + String(segundos).padStart(2, "0");
+
+    //En caso que la HoraInicial o la HoraFinal
     } else {
         return "00:00:00";
     }
 }
 
+//Ejemplo runner para realización del ejercicio
 let ejemploRunner = new Runner("Ricardo", "Fernandez", "Maratón de la Ciudad", new Date("2023-10-30"),
     123, new Date("2023-10-30T08:00:00"), new Date("2023-10-30T10:45:30")
 );
@@ -61,3 +70,6 @@ console.log(ejemploRunner);
 
 const marca = calcularMarca(ejemploRunner);
 console.log("Marca: " + marca);
+
+
+//Nombre del propietario: Ricardo Fernández Guzmán
