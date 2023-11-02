@@ -38,7 +38,7 @@ function existeValor2(array, valor) {
 //Ejercicio 2.
 //Para desordenar los valores, se realiza un bucle de de manera aleatoria cambie
 for (let i = 0; i < array.length; i++) {
-  let random = Math.floor(Math.random() * (array.length-1));
+  let random = Math.floor(Math.random() * (array.length));
   [array[i],array[random]]= [array[random],array[i]];
 }
 alert("Array desordenado: " + array);
